@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas de Películas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77d8d8 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .movie {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .movie h2 {
+            margin-top: 0;
+        }
+        .review {
+            margin-top: 20px;
+        }
+        .review input, .review textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .review button {
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Reseñas de Películas</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="movie" id="movie1">
+            <h2>Inception</h2>
+            <p>Director: Christopher Nolan</p>
+            <p>Año: 2010</p>
+            <div class="reviews">
+                <h3>Reseñas:</h3>
+                <div class="review-list"></div>
+            </div>
+            <div class="review">
+                <h3>Escribe una reseña:</h3>
+                <input type="text" id="name1" placeholder="Tu nombre">
+                <textarea id="review1" placeholder="Tu reseña"></textarea>
+                <button onclick="addReview('movie1')">Enviar</button>
+            </div>
+        </div>
+        <div class="movie" id="movie2">
+            <h2>Interstellar</h2>
+            <p>Director: Christopher Nolan</p>
+            <p>Año: 2014</p>
+            <div class="reviews">
+                <h3>Reseñas:</h3>
+                <div class="review-list"></div>
+            </div>
+            <div class="review">
+                <h3>Escribe una reseña:</h3>
+                <input type="text" id="name2" placeholder="Tu nombre">
+                <textarea id="review2" placeholder="Tu reseña"></textarea>
+                <button onclick="addReview('movie2')">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addReview(movieId) {
+            var name = document.getElementById('name' + movieId.slice(-1)).value;
+            var review = document.getElementById('review' + movieId.slice(-1)).value;
+            if (name && review) {
+                var reviewList = document.querySelector('#' + movieId + ' .review-list');
+                var newReview = document.createElement('div');
+                newReview.innerHTML = '<strong>' + name + ':</strong><p>' + review + '</p>';
+                reviewList.appendChild(newReview);
+                document.getElementById('name' + movieId.slice(-1)).value = '';
+                document.getElementById('review' + movieId.slice(-1)).value = '';
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        }
+    </script>
+</body>
+</html>
