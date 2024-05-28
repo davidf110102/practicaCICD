@@ -1,0 +1,15 @@
+{
+    "name": "movie-reviews",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"No test specified\" && exit 0",
+      "deploy": "gh-pages -d ."
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "gh-pages": "^3.2.3"
+    }
+  }
+  
